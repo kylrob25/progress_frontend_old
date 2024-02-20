@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import { Link } from "react-router-dom"
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -13,7 +13,7 @@ const NavbarComponent = () => {
     return (
         <Navbar bg="dark" variant="dark" expand="md">
             <Container>
-                <Navbar.Brand href="#home">Progress</Navbar.Brand>
+                <Navbar.Brand href="/">Progress</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" onClick={handleToggle}/>
                 <Navbar.Collapse id="navbar-collapse">
                     <Nav className="ml-auto" style={{flex: 1}}>
