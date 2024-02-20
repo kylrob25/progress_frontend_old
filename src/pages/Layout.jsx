@@ -1,9 +1,10 @@
 import {Outlet, Link} from "react-router-dom"
+import NavbarComponent from "../components/Navbar";
 
 const Layout = () => {
     return (
         <>
-            <h1>TODO: nav</h1>
+            <NavbarComponent/>
             <Outlet/>
         </>
     )
