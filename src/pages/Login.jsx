@@ -1,54 +1,64 @@
-import React, {useState} from "react"
-import {MDBBtn, MDBCard, MDBCardBody, MDBContainer, MDBInput} from "mdb-react-ui-kit";
+import React, { useState } from "react";
+import { Container, Card, CardContent, Typography, TextField, Button, Box, Link } from "@material-ui/core";
 
 const Login = () => {
-    const [email, setEmail] = useState()
-    const [password, setPassword] = useState()
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
     const handleSubmit = (event) => {
-        event.preventDefault()
-    }
+        event.preventDefault();
+    };
+
     return (
-        <MDBContainer fluid className='d-flex align-items-center justify-content-center bg-image'>
-            <div className='mask gradient-custom-3'></div>
-            <MDBCard className='m-5' style={{maxWidth: '600px'}}>
-                <MDBCardBody className='px-5'>
-                    <h2 className="text-uppercase text-center">Login</h2>
-                    <p className="mb-0 text-center mb-4">
-                        Don't have an account? <a href="/register">Register</a>
-                    </p>
-                    <MDBInput
-                        wrapperClass='mb-4'
-                        label='Email Address'
-                        size='lg'
-                        id='email'
-                        type='email'
-                        required
-                        onChange={e => setEmail(e.target.value)}
-                    />
-                    <MDBInput
-                        wrapperClass='mb-4'
-                        label='Password'
-                        size='lg'
-                        id='password'
-                        type='password'
-                        required
-                        onChange={e => setPassword(e.target.value)}
-                    />
-                    <MDBBtn
-                        className='mb-4 w-100 gradient-custom-4'
-                        size='lg'
-                        onClick={handleSubmit}>
-                        Register
-                    </MDBBtn>
+        <Container maxWidth="sm" sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100vh', flexDirection: 'column' }}>
+            <Card sx={{ width: '100%', maxWidth: 600, m: 2 }}>
+                <CardContent sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                    <Typography variant="h5" component="h2" gutterBottom className="text-uppercase text-center">
+                        Login
+                    </Typography>
+                    <Typography variant="body2" component="p" className="text-center mb-4">
+                        Already have an account? <Link href="/login" underline="hover">Login</Link>
+                    </Typography>
+                    <Box component="form" onSubmit={handleSubmit} sx={{ width: '100%', mt: 1 }}>
+                        <TextField
+                            margin="normal"
+                            required
+                            fullWidth
+                            id="email"
+                            label="Email Address"
+                            name="email"
+                            autoComplete="email"
+                            autoFocus
+                            variant="outlined"
+                            onChange={e => setEmail(e.target.value)}
+                        />
+                        <TextField
+                            margin="normal"
+                            required
+                            fullWidth
+                            name="password"
+                            label="Password"
+                            type="password"
+                            id="password"
+                            autoComplete="current-password"
+                            variant="outlined"
+                            onChange={e => setPassword(e.target.value)}
+                        />
+                        <Button
+                            type="submit"
+                            fullWidth
+                            variant="contained"
+                            sx={{ mt: 3, mb: 2 }}>
+                            Login
+                        </Button>
+                    </Box>
+                    <Typography variant="body2">
+                        This site is protected by reCAPTCHA and the Google <Link href="https://policies.google.com/privacy" underline="hover">Privacy Policy</Link> and <Link href="https://policies.google.com/terms" underline="hover">Terms of Service</Link> apply.
+                    </Typography>
+                </CardContent>
+            </Card>
+        </Container>
+    );
+};
 
-                    <small>
-                        This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy">Privacy Policy</a> and <a href="https://policies.google.com/terms">Terms of Service</a> apply.
-                    </small>
-                </MDBCardBody>
-            </MDBCard>
-        </MDBContainer>
-    )
-}
-
-export default Login
+export default Login;
