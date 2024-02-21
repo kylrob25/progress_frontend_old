@@ -68,12 +68,10 @@ const ViewUser = () => {
                             Roles: {user.roles.join(', ')}
                         </Typography>
 
-                        <br/>
-
                         {
                             isTrainer && (
                                 <>
-                                    <Button as={Link} to={`/trainer/${trainer.username}`} variant="primary">View</Button>
+                                    <Button as={Link} to={`/trainer/${trainer.username}`} variant="primary">View Trainer</Button>
                                 </>
                             )
                         }
