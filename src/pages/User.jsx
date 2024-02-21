@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from 'react-router-dom';
+import {Link, useParams} from 'react-router-dom';
 import { Card, CardContent, Typography, Grid } from '@material-ui/core';
+import {Button} from "react-bootstrap";
 
 const ViewUser = () => {
     const { userId } = useParams()
     const [user, setUser] = useState(null)
     const [trainer, setTrainer] = useState(null)
     const [isTrainer, setIsTrainer] = useState(false)
-
 
     const fetchUser = async() => {
         try {
@@ -73,9 +73,7 @@ const ViewUser = () => {
                         {
                             isTrainer && (
                                 <>
-                                    <Typography variant="body1">
-                                        Trainer ID: {trainer.id}
-                                    </Typography>
+                                    <Button as={Link} to={`/trainer/${trainer.username}`} variant="primary">View</Button>
                                 </>
                             )
                         }

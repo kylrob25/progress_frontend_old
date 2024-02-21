@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Button, Table } from "react-bootstrap";
 import {Link} from 'react-router-dom';
 
-const ViewUsers = () => {
+const Users = () => {
     const [users, setUsers] = useState([])
 
     const fetchUsers = async() => {
@@ -47,4 +47,4 @@ const ViewUsers = () => {
     );
 }
 
-export default ViewUsers;
+export default Users;
