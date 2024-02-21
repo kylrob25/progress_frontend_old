@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
-import { Link } from "react-router-dom"
+import {Link, useLocation} from "react-router-dom"
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const NavbarComponent = () => {
@@ -9,6 +9,10 @@ const NavbarComponent = () => {
     const handleToggle = () => {
         setOpen(!open)
     }
+
+    useEffect(() => {
+        setOpen(false)
+    }, [useLocation()])
 
     return (
         <Navbar bg="dark" variant="dark" expand="md">
@@ -30,4 +34,4 @@ const NavbarComponent = () => {
     );
 };
 
-export default NavbarComponent;
+export default NavbarComponent
