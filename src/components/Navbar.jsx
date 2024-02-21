@@ -24,7 +24,6 @@ const NavbarComponent = () => {
                     <Nav className="me-auto">
                         <Nav.Link as={Link} to="/" onClick={() => setOpen(false)}>Home</Nav.Link>
                         <Nav.Link as={Link} to="/admin/user" onClick={() => setOpen(false)}>Users</Nav.Link>
-                        <Nav.Link as={Link} to="/trainer" onClick={() => setOpen(false)}>Trainers</Nav.Link>
                     </Nav>
                     <Nav>
                         <Nav.Link as={Link} to="/login" onClick={() => setOpen(false)}>Login</Nav.Link>

@@ -39,7 +39,7 @@ const Trainers = () => {
     if (error) return <Typography color="error">{error}</Typography>;
 
     return (
-        <Container maxWidth="lg" style={{ marginTop: '20px', marginBottom: '20px' }}> {/* Add Container with max width */}
+        <Container maxWidth="lg" style={{ marginTop: '20px', marginBottom: '20px' }}>
             <TextField
                 label="Search"
                 fullWidth

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Table } from "react-bootstrap";
+import {Button, Container, Table} from "react-bootstrap";
 import { Link } from 'react-router-dom';
 import axios from "axios";
 
@@ -33,8 +33,14 @@ const Users = () => {
     }, []);
 
     return (
-        <>
-            <Button as={Link} to="/admin/create" variant="primary">Create</Button>
+        <Container maxWidth="lg" style={{ marginTop: '20px', marginBottom: '20px' }}>
+            <Button
+                as={Link}
+                to="/admin/create"
+                variant="primary"
+                style={{ marginBottom: '20px' }}>
+                Create
+            </Button>
             <div className="table-responsive">
                 <Table striped bordered hover>
                     <thead>
@@ -62,7 +68,7 @@ const Users = () => {
                     </tbody>
                 </Table>
             </div>
-        </>
+        </Container>
     );
 };
 
