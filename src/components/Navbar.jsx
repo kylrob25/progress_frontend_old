@@ -1,33 +1,34 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
-import {Link, useLocation} from "react-router-dom"
+import { Link, useLocation } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const NavbarComponent = () => {
-    const [open, setOpen] = useState(false)
+    const [open, setOpen] = useState(false);
+    const location = useLocation();
 
     const handleToggle = () => {
-        setOpen(!open)
-    }
+        setOpen(!open);
+    };
 
     useEffect(() => {
-        setOpen(false)
-    }, [useLocation()])
+        setOpen(false);
+    }, [location]);
 
     return (
-        <Navbar bg="dark" variant="dark" expand="md">
+        <Navbar bg="dark" variant="dark" expand="lg" expanded={open}>
             <Container>
-                <Navbar.Brand href="/">Progress</Navbar.Brand>
+                <Navbar.Brand as={Link} to="/">Progress</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" onClick={handleToggle}/>
-                <Navbar.Collapse id="navbar-collapse">
-                    <Nav className="ml-auto" style={{flex: 1}}>
-                        <Link to="/" className="nav-link">Home</Link>
-                        <Link to="/admin/user" className="nav-link">Users</Link>
-                        <Link to="/trainer" className="nav-link">Trainers</Link>
+                <Navbar.Collapse id="basic-navbar-nav">
+                    <Nav className="me-auto">
+                        <Nav.Link as={Link} to="/" onClick={() => setOpen(false)}>Home</Nav.Link>
+                        <Nav.Link as={Link} to="/admin/user" onClick={() => setOpen(false)}>Users</Nav.Link>
+                        <Nav.Link as={Link} to="/trainer" onClick={() => setOpen(false)}>Trainers</Nav.Link>
                     </Nav>
-                    <Nav className="justify-content-end" style={{flex: 1}}>
-                        <Link to="/login" className="nav-link">Login</Link>
-                        <Link to="/register" className="nav-link">Register</Link>
+                    <Nav>
+                        <Nav.Link as={Link} to="/login" onClick={() => setOpen(false)}>Login</Nav.Link>
+                        <Nav.Link as={Link} to="/register" onClick={() => setOpen(false)}>Register</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
@@ -35,4 +36,4 @@ const NavbarComponent = () => {
     );
 };
 
-export default NavbarComponent
+export default NavbarComponent;
