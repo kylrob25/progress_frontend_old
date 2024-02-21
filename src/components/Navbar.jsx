@@ -22,6 +22,7 @@ const NavbarComponent = () => {
                 <Navbar.Collapse id="navbar-collapse">
                     <Nav className="ml-auto" style={{flex: 1}}>
                         <Link to="/" className="nav-link">Home</Link>
+                        <Link to="/admin/user" className="nav-link">Users</Link>
                         <Link to="/trainer" className="nav-link">Trainers</Link>
                     </Nav>
                     <Nav className="justify-content-end" style={{flex: 1}}>
