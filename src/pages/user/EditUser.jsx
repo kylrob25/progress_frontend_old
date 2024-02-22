@@ -1,6 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from 'react-router-dom';
-import {Card, CardContent, Typography, Grid, TextField, FormControl, Box} from '@material-ui/core';
+import {
+    Card,
+    CardContent,
+    Typography,
+    Grid,
+    TextField,
+    FormControl,
+    InputLabel,
+    Select,
+    MenuItem, Checkbox, ListItemText
+} from '@material-ui/core';
 import { Button } from "react-bootstrap";
 import axios from "axios";
 
@@ -14,6 +24,7 @@ const EditUser = () => {
         email: '',
         roles: []
     });
+    const [allRoles, setAllRoles] = useState([]);
 
     const fetchUser = async () => {
         try {
@@ -24,8 +35,18 @@ const EditUser = () => {
         }
     };
 
+    const fetchRoles = async () => {
+        try {
+            const response = await axios.get(`http://localhost:8080/api/roles`);
+            setAllRoles(response.data); // Assuming the API returns an array of roles
+        } catch (error) {
+            console.error("Error fetching roles:", error);
+        }
+    };
+
     useEffect(() => {
         fetchUser();
+        fetchRoles();
     }, [userId]);
 
     const handleChange = (e) => {
@@ -37,10 +58,10 @@ const EditUser = () => {
     };
 
     const handleRoleChange = (event) => {
-        const value = Array.from(event.target.selectedOptions, option => option.value);
+        const value = event.target.value;
         setUser(prevState => ({
             ...prevState,
-            roles: value
+            roles: typeof value === 'string' ? value.split(',') : value,
         }));
     };
 
@@ -109,6 +130,33 @@ const EditUser = () => {
                                 value={user.email}
                                 onChange={handleChange}
                             />
+
+                            <FormControl fullWidth margin="normal">
+                                <InputLabel id="role-select-label">Roles</InputLabel>
+                                <Select
+                                    labelId="role-select-label"
+                                    multiple
+                                    value={user.roles}
+                                    onChange={handleRoleChange}
+                                    renderValue={(selected) => selected.join(', ')}
+                                    MenuProps={{
+                                        PaperProps: {
+                                            style: {
+                                                maxHeight: 224,
+                                                width: 250,
+                                            },
+                                        },
+                                    }}
+                                >
+                                    {allRoles.map((role) => (
+                                        <MenuItem key={role} value={role}>
+                                            <Checkbox checked={user.roles.indexOf(role) > -1} />
+                                            <ListItemText primary={role} />
+                                        </MenuItem>
+                                    ))}
+                                </Select>
+                            </FormControl>
+
                             <Button type="submit" variant="primary">Save Changes</Button>
                         </form>
                     </CardContent>
