@@ -15,7 +15,7 @@ const ViewUser = () => {
             setUser(userData.data);
 
             if (userData.data.roles && userData.data.roles.includes('TRAINER')) {
-                const trainerData = await axios.get(`http://localhost:8080/api/trainer/user/${userId}`);
+                const trainerData = await axios.get(`http://localhost:8080/api/trainer/${userData.data.username}`);
                 setTrainer(trainerData.data);
             }
         } catch (error) {
@@ -56,6 +56,7 @@ const ViewUser = () => {
                                 Roles: {user.roles.join(', ')}
                             </Typography>
                         )}
+
                         {trainer && (
                             <Button as={Link} to={`/trainer/${trainer.username}`} variant="primary">View Trainer Profile</Button>
                         )}
