@@ -24,12 +24,14 @@ const EditUser = () => {
         email: '',
         roles: []
     });
+    const [initialRoles, setInitialRoles] = useState([]);
     const [allRoles, setAllRoles] = useState([]);
 
     const fetchUser = async () => {
         try {
             const response = await axios.get(`http://localhost:8080/api/user/${userId}`);
             setUser(response.data);
+            setInitialRoles([...response.data.roles]);
         } catch (error) {
             console.error("Error fetching user data:", error);
         }
@@ -67,6 +69,20 @@ const EditUser = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        const hadTrainerRole = initialRoles.includes('TRAINER');
+        const nowHasTrainerRole = user.roles.includes('TRAINER');
+
+        if (hadTrainerRole && !nowHasTrainerRole) {
+            try {
+                await axios.delete(`http://localhost:8080/api/trainer/userId/${userId}`);
+                alert('Trainer profile deleted successfully.');
+            } catch (error) {
+                console.error("Error deleting trainer profile:", error);
+                return;
+            }
+        }
+
         try {
             await axios.put(`http://localhost:8080/api/user/${userId}`, user);
             navigate(`/admin/view-user/${userId}`);
