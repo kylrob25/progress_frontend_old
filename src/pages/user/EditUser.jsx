@@ -40,7 +40,7 @@ const EditUser = () => {
     const fetchRoles = async () => {
         try {
             const response = await axios.get(`http://localhost:8080/api/roles`);
-            setAllRoles(response.data); // Assuming the API returns an array of roles
+            setAllRoles(response.data);
         } catch (error) {
             console.error("Error fetching roles:", error);
         }

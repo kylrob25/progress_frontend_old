@@ -40,7 +40,7 @@ const ViewUsers = () => {
         <Container maxWidth="lg" style={{ marginTop: '20px', marginBottom: '20px' }}>
             <Button
                 as={Link}
-                to="/admin/create"
+                to="/admin/create-user"
                 variant="primary"
                 style={{ marginBottom: '20px' }}>
                 Create

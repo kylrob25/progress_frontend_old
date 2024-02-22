@@ -8,7 +8,7 @@ const ViewTrainer = () => {
 
     const fetchUser = async() => {
         try {
-            const response = await fetch('http://localhost:8080/api/trainer/' + username);
+            const response = await fetch('http://localhost:8080/api/trainer/username/' + username);
             const data = await response.json();
 
             setTrainer(data);

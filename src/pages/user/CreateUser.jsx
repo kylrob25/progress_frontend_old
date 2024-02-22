@@ -17,7 +17,8 @@ const CreateUser = () => {
         axios
             .post("http://localhost:8080/api/user", data)
             .then((response) => {
-                navigate("/admin/user");
+                navigate("/admin/view-users");
+                alert(data)
             })
             .catch((error) => {
             });
