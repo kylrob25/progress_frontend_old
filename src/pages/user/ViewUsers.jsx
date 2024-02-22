@@ -2,17 +2,19 @@ import React, { useEffect, useState } from "react";
 import {Button, Container, Table} from "react-bootstrap";
 import { Link } from 'react-router-dom';
 import axios from "axios";
+import {Typography} from "@material-ui/core";
 
 const ViewUsers = () => {
     const [users, setUsers] = useState([]);
+    const [error, setError] = useState("");
 
     const fetchUsers = async () => {
         try {
             const response = await axios.get('http://localhost:8080/api/user');
             setUsers(response.data);
-        } catch (error) {
-            console.error("Failed to fetch users:", error);
-            // TODO: implement user feedback for failed fetch operation
+        } catch (err) {
+            console.log(err.message);
+            setError("Failed to fetch users. Please try again later.");
         }
     };
 
@@ -20,17 +22,19 @@ const ViewUsers = () => {
         axios.delete(`http://localhost:8080/api/user/${userId}`)
             .then(() => {
                 alert(`Deleted user: ${userId}`);
-                fetchUsers(); // Refresh
+                fetchUsers();
             })
             .catch((error) => {
                 console.error("Failed to delete user:", error);
-                // TODO: implement user feedback for failed delete operation
+                alert('Failed to detect user.')
             });
     };
 
     useEffect(() => {
         fetchUsers();
-    }, []);
+    }, [users]);
+
+    if (error) return <Typography color="error">{error}</Typography>;
 
     return (
         <Container maxWidth="lg" style={{ marginTop: '20px', marginBottom: '20px' }}>
