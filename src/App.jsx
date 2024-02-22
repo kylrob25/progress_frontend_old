@@ -1,12 +1,12 @@
 import { BrowserRouter, Routes, Route} from "react-router-dom";
-import Users from "./pages/user/Users";
+import ViewUsers from "./pages/user/ViewUsers";
 import NoPage from "./pages/NoPage";
 import Layout from "./pages/Layout";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
-import User from "./pages/user/User"
-import Trainer from "./pages/Trainer";
-import Trainers from "./pages/Trainers";
+import ViewUser from "./pages/user/ViewUser"
+import Trainer from "./pages/trainer/ViewTrainer";
+import ViewTrainers from "./pages/trainer/ViewTrainers";
 import CreateUser from "./pages/user/CreateUser";
 
 const App = () => {
@@ -14,10 +14,10 @@ const App = () => {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Layout />}>
-                    <Route index element={<Trainers />} />
+                    <Route index element={<ViewTrainers />} />
 
-                    <Route path="/admin/user" element={<Users />} />
-                    <Route path="/admin/user/:userId" element={<User />} />
+                    <Route path="/admin/user" element={<ViewUsers />} />
+                    <Route path="/admin/user/:userId" element={<ViewUser />} />
                     <Route path="/admin/create" element={<CreateUser/>} />
 
                     <Route path="/register" element={<Register/>} />

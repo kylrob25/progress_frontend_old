@@ -3,7 +3,7 @@ import {Button, Container, Table} from "react-bootstrap";
 import { Link } from 'react-router-dom';
 import axios from "axios";
 
-const Users = () => {
+const ViewUsers = () => {
     const [users, setUsers] = useState([]);
 
     const fetchUsers = async () => {
@@ -72,4 +72,4 @@ const Users = () => {
     );
 };
 
-export default Users;
+export default ViewUsers;

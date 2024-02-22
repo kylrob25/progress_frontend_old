@@ -3,7 +3,7 @@ import { Grid, Card, CardContent, CardActions, Button, Typography, CardMedia, Te
 import { Link } from 'react-router-dom';
 import axios from "axios";
 
-const Trainers = () => {
+const ViewTrainers = () => {
     const [trainers, setTrainers] = useState([]);
     const [filteredTrainers, setFilteredTrainers] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
@@ -79,4 +79,4 @@ const Trainers = () => {
     );
 };
 
-export default Trainers;
+export default ViewTrainers;

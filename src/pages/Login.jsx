@@ -17,7 +17,7 @@ const Login = () => {
                         Login
                     </Typography>
                     <Typography variant="body2" component="p" className="text-center mb-4">
-                        Already have an account? <Link href="/login" underline="hover">Login</Link>
+                        Don't have an account? <Link href="/register" underline="hover">Register</Link>
                     </Typography>
                     <Box component="form" onSubmit={handleSubmit} sx={{ width: '100%', mt: 1 }}>
                         <TextField
