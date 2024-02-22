@@ -64,7 +64,7 @@ const ViewUsers = () => {
                             <td>{user.surname}</td>
                             <td>{user.email}</td>
                             <td>
-                                <Button as={Link} to={`/admin/user/${user.id}`} variant="primary" className="me-2">View</Button>
+                                <Button as={Link} to={`/admin/view-user/${user.id}`} variant="primary" className="me-2">View</Button>
                                 <Button variant="danger" onClick={() => deleteUser(user.id)}>Delete</Button>
                             </td>
                         </tr>

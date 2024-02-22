@@ -57,6 +57,8 @@ const ViewUser = () => {
                             </Typography>
                         )}
 
+                        <Button as={Link} to={`/admin/edit-user/${userId}`} variant="primary">Edit User</Button>
+
                         {trainer && (
                             <Button as={Link} to={`/trainer/${trainer.username}`} variant="primary">View Trainer Profile</Button>
                         )}

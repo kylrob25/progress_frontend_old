@@ -8,6 +8,7 @@ import ViewUser from "./pages/user/ViewUser"
 import Trainer from "./pages/trainer/ViewTrainer";
 import ViewTrainers from "./pages/trainer/ViewTrainers";
 import CreateUser from "./pages/user/CreateUser";
+import EditUser from "./pages/user/EditUser";
 
 const App = () => {
     return (
@@ -16,9 +17,10 @@ const App = () => {
                 <Route path="/" element={<Layout />}>
                     <Route index element={<ViewTrainers />} />
 
-                    <Route path="/admin/user" element={<ViewUsers />} />
-                    <Route path="/admin/user/:userId" element={<ViewUser />} />
-                    <Route path="/admin/create" element={<CreateUser/>} />
+                    <Route path="/admin/view-users" element={<ViewUsers />} />
+                    <Route path="/admin/view-user/:userId" element={<ViewUser />} />
+                    <Route path="/admin/create-user" element={<CreateUser/>} />
+                    <Route path="/admin/edit-user/:userId" element={<EditUser/>} />
 
                     <Route path="/register" element={<Register/>} />
                     <Route path="/login" element={<Login/>} />
